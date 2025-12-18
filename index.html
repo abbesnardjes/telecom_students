@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site éducatif centralisant les ressources pédagogiques pour étudiants en Télécommunications : cours, TD, vidéos et examens organisés par niveau.">
+    <meta name="keywords" content="Télécommunications, étudiants, cours, TD, examens, Licence, Master">
+    <title>📡 Site Éducatif Télécommunications - Ressources Centralisées</title>
+    <style>
+        /* Variables CSS pour cohérence */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --section-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 10px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset et base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: var(--background-gradient);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Header avec logo et navigation améliorée */
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        nav a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Main avec grille pour sections */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        section {
+            padding: 2rem;
+            background-color: var(--section-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "📚";
+            margin-right: 0.5rem;
+        }
+
+        h3 {
+            color: #555;
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            color: #777;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            list-style-type: disc;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        /* Niveaux et modules avec accordéons */
+        .niveau {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: #f9f9f9;
+        }
+
+        .module {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-left: 5px solid var(--primary-color);
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .module details {
+            margin-top: 0.5rem;
+        }
+
+        .module summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .module summary:hover {
+            color: #0056b3;
+        }
+
+        /* Footer amélioré */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(0, 123, 255, 0.9);
+            color: white;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            section {
+                padding: 1rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Accessibilité */
+        a:focus, button:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            header, nav, footer {
+                display: none;
+            }
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📡 Site Éducatif pour Étudiants en Télécommunications</h1>
+        <nav>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#objectifs">Objectifs</a></li>
+                <li><a href="#public">Public Cible</a></li>
+                <li><a href="#contenu">Contenu</a></li>
+                <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                <li><a href="#valeur">Valeur Ajoutée</a></li>
+                <li><a href="#technique">Aspect Technique</a></li>
+                <li><a href="#evolution">Perspectives</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>1️⃣ Introduction</h2>
+            <p>Avec l’évolution rapide des technologies et la multiplication des ressources pédagogiques en ligne, les étudiants en télécommunications rencontrent souvent des difficultés à retrouver leurs cours, travaux dirigés et examens. Les supports sont généralement dispersés entre les réseaux sociaux, des groupes non structurés et des fichiers partagés sans organisation claire.</p>
+            <p>Ce projet consiste à concevoir un site web éducatif dédié aux étudiants en télécommunications, ayant pour objectif de centraliser et d’organiser l’ensemble des ressources pédagogiques dans un espace unique, accessible et facile à utiliser.</p>
+        </section>
+
+        <section id="objectifs">
+            <h2>2️⃣ Objectifs du projet</h2>
+            <ul>
+                <li>Faciliter l’accès aux cours et supports pédagogiques.</li>
+                <li>Organiser les contenus par niveau d’étude et par module.</li>
+                <li>Aider les nouveaux étudiants à mieux s’orienter dans la spécialité.</li>
+                <li>Améliorer la compréhension des notions théoriques grâce à des TD corrigés et des supports complémentaires.</li>
+                <li>Encourager l’apprentissage autonome et la collaboration entre étudiants.</li>
+            </ul>
+        </section>
+
+        <section id="public">
+            <h2>3️⃣ Public cible</h2>
+            <p>Le site est destiné principalement à :</p>
+            <ul>
+                <li>Les étudiants en Licence 2 Télécommunications</li>
+                <li>Les étudiants en Licence 3 Télécommunications</li>
+                <li>Les étudiants en Master 1 et Master 2</li>
+                <li>Les nouveaux étudiants souhaitant découvrir la spécialité Télécommunications</li>
+            </ul>
+        </section>
+
+        <section id="contenu">
+            <h2>4️⃣ Contenu du site</h2>
+            <p>Le contenu est structuré de manière hiérarchique et claire :</p>
+            <h3>🔹 Organisation par niveau :</h3>
+            <ul>
+                <li><a href="#licence2">Licence 2</a></li>
+                <li><a href="#licence3">Licence 3</a></li>
+                <li><a href="#master1">Master 1</a></li>
+                <li><a href="#master2">Master 2</a></li>
+            </ul>
+            <h3>🔹 Organisation par module :</h3>
+            <p>Chaque module dispose d’une page dédiée contenant :</p>
+            <ul>
+                <li>Cours : supports PDF, résumés et notes de cours.</li>
+                <li>Travaux Dirigés (TD) : exercices avec corrigés.</li>
+                <li>Vidéos pédagogiques : explications détaillées des notions importantes.</li>
+                <li>Examens : sujets d’examens des années précédentes avec solutions lorsque disponibles.</li>
+            </ul>
+
+            <!-- Licence 2 -->
+            <div id="licence2" class="niveau">
+                <h3>Licence 2</h3>
+                <div class="module">
+                    <h4>Module 1 : Introduction aux Télécommunications</h4>
+                    <details>
+                        <summary>Cliquez pour voir les ressources</summary>
+                        <ul>
+                            <li><a href="#">📄 Cours - PDF</a></li>
+                            <li><a href="#">✏️ TD Corrigé</a></li>
+                            <li><a href="#">🎥 Vidéo pédagogique</a></li>
+                            <li><a href="#">📝 Examen 2022</a></li>
+                        </ul>
+                    </details>
+                </div>
+                <div class="module">
+                    <h4>Module 2 : Signaux et Systèmes</h4>
+                    <details>
+                        <summary>Cliquez pour voir les ressources</summary>
+                        <ul>
+                            <li><a href="#">📄 Cours - PDF</a></li>
+                            <li><a href="#">✏️ TD Corrigé</a></li>
+                            <li><a href="#">🎥 Vidéo pédagogique</a></li>
+                            <li><a href="#">📝 Examen 2021</a></li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Licence 3 -->
+            <div id="licence3" class="niveau">
+                <h3>Licence 3</h3>
+                <div class="module">
+                    <h4>Module 1 : Réseaux Informatiques</h4>
+                    <details>
+                        <summary>Cliquez pour voir les ressources</summary>
+                        <ul>
+                            <li><a href="#">📄 Cours - PDF</a></li>
+                            <li><a href="#">✏️ TD Corrigé</a></li>
+                            <li><a href="#">🎥 Vidéo pédagogique</a></li>
+                            <li><a href="#">📝 Examen 2023</a></li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Master 1 -->
+            <div id="master1" class="niveau">
+                <h3>Master 1</h3>
+                <div class="module">
+                    <h4>Module 1 : Télécommunications Avancées</h4>
+                    <details>
+                        <summary>Cliquez pour voir les ressources</summary>
+                        <ul>
+                            <li><a href="#">📄 Cours - PDF</a></li>
+                            <li><a href="#">✏️ TD Corrigé</a></li>
+                            <li><a href="#">🎥 Vidéo pédagogique</a></li>
+                            <li><a href="#">📝 Examen 2022</a></li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Master 2 -->
+            <div id="master2" class="niveau">
+                <h3>Master 2</h3>
+                <div class="module">
+                    <h4>Module 1 : Recherche en Télécommunications</h4>
+                    <details>
+                        <summary>Cliquez pour voir les ressources</summary>
+                        <ul>
+                            <li><a href="#">📄 Cours - PDF</a></li>
+                            <li><a href="#">✏️ TD Corrigé</a></li>
+                            <li><a href="#">🎥 Vidéo pédagogique</a></li>
+                            <li><a href="#">📝 Examen 2023</a></li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="fonctionnalites">
+            <h2>5️⃣ Fonctionnalités principales</h2>
+            <ul>
+                <li>Interface simple, claire et intuitive.</li>
+                <li>Navigation rapide entre les niveaux et les modules.</li>
+                <li>Accès aux ressources à tout moment.</li>
+                <li>Possibilité d’évolution du contenu selon les besoins des étudiants.</li>
+                <li>Moteur de recherche interne (optionnel).</li>
+            </ul>
+        </section>
+
+        <section id="valeur">
+            <h2>6️⃣ Valeur ajoutée du projet</h2>
+            <ul>
+                <li>Gain de temps pour les étudiants.</li>
+                <li>Centralisation des ressources pédagogiques.</li>
+                <li>Amélioration de la qualité de l’apprentissage.</li>
+                <li>Soutien à l’autoformation.</li>
+                <li>Création d’une communauté académique autour de la spécialité Télécommunications.</li>
+            </ul>
+        </section>
+
+        <section id="technique">
+            <h2>7️⃣ Aspect technique</h2>
+            <p>Le site est développé à l’aide des technologies suivantes :</p>
+            <ul>
+                <li>HTML pour la structure des pages.</li>
+                <li>CSS pour la mise en forme et le design.</li>
+                <li>JavaScript pour l’interactivité.</li>
+                <li>Intégration possible d’une base de données pour la gestion des utilisateurs et des contenus à l’avenir.</li>
+            </ul>
+        </section>
+
+        <section id="evolution">
+            <h2>8️⃣ Perspectives d’évolution</h2>
+            <ul>
+                <li>Création de comptes étudiants personnalisés.</li>
+                <li>Ajout d’un système de commentaires et de questions.</li>
+                <li>Contribution des étudiants à l’enrichissement du contenu (après validation).</li>
+                <li>Extension du site à d’autres spécialités scientifiques.</li>
+                <li>Développement d’une application mobile associée au site web.</li>
+            </ul>
+        </section>
+
+        <section id="conclusion">
+            <h2>9️⃣ Conclusion</h2>
+            <p>Ce projet représente une solution numérique efficace pour améliorer l’accès aux ressources pédagogiques des étudiants en télécommunications. Il vise à faciliter l’apprentissage, renforcer l’autonomie des étudiants et moderniser les méthodes d’enseignement universitaire.</p>
+            <p>Il constitue également une base solide pour un projet académique ou professionnel évolutif.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Site Éducatif Télécommunications. Tous droits réservés.</p>
+        <p><a href="#top">Retour en haut</a> | <a href="mailto:contact@telecom-site.edu">Contact</a></p>
+    </footer>
+</body>
+</html>
